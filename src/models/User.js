@@ -38,11 +38,11 @@ module.exports = (sequelize, DataTypes) => {
 },
  );
 
-//  User.associcate = (models) => {
-//   User.belongsTo(models.blog_posts, {
-//     foreignKey: 'user_id',
-//     as: 'blogPosts',
-//   });
-//  };
+ User.associcate = (models) => {
+  User.belongsTo(models.blog_posts, {
+    foreignKey: 'user_id',
+    as: 'blogPosts',
+  });
+ };
  return User;
 };

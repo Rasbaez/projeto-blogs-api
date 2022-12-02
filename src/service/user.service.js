@@ -16,7 +16,18 @@ const getUserByEmail = async (userEmail) => {
 return user;
 };
 
+const getUsers = async () => {
+  const users = await User.findAll();
+
+ const result = users.map(({ id, display_name: displayName, email, image }) => (
+  { id, displayName, email, image }));
+
+  if (!users) return { type: 'USERS_NOT_FOUND', message: 'Cannot find users' };
+  return { type: null, message: result };
+};
+
 module.exports = { 
-  createUser,
+   createUser,
    getUserByEmail,
+   getUsers,
    };
