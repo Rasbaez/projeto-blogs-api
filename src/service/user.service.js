@@ -7,10 +7,8 @@ const createUser = async (body) => {
 
  const { password: _password, ...userWithoutPassword } = newUser.dataValues;
 
- const token = generateToken(userWithoutPassword);
-
  if (!newUser) return { type: 'FAIL_ON_CREATE_USER', message: 'Fail on create user' };
- return { type: null, message: userWithoutPassword, token };
+ return { type: null, message: userWithoutPassword };
 };
 
 const getUserByEmail = async (userEmail) => {
