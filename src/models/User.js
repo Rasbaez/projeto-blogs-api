@@ -7,9 +7,11 @@ module.exports = (sequelize, DataTypes) => {
     primaryKey: true,
     type: DataTypes.INTEGER
   },
+
   display_name: {
     type: DataTypes.STRING,
   },
+
   email: {
     type: DataTypes.STRING,
   },
@@ -19,26 +21,28 @@ module.exports = (sequelize, DataTypes) => {
   image: {
     type: DataTypes.STRING,
   },
+
   created_at: {
    type: DataTypes.DATE,
   },
+
   updated_at: {
     type: DataTypes.DATE
   }, 
  },
  {
   timestamps: false,
-  tableName: 'Users',
+  tableName: 'users',
   // avaliador falhando por conta do underscored
   // underscored: true,
 },
  );
 
- User.associcate = (models) => {
-  User.belongsTo(models.blog_posts, {
-    foreignKey: 'user_id',
-    as: 'blogPosts',
-  });
- };
+//  User.associcate = (models) => {
+//   User.belongsTo(models.blog_posts, {
+//     foreignKey: 'user_id',
+//     as: 'blogPosts',
+//   });
+//  };
  return User;
 };
