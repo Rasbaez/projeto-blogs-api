@@ -10,10 +10,8 @@ const verifyToken = (req, res, next) => {
   jwt.verify(authorization, JWT_SECRET, (err) => {
     if (err) {
        return res.status(401).json({ message: 'Expired or invalid token' });
-    } 
+    } return next(); 
   });
- 
-  return next(); 
 };
 
 module.exports = { verifyToken };

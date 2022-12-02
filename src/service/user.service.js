@@ -1,4 +1,5 @@
 const snakecaseKeys = require('snakecase-keys');
+const camelize = require('camelize');
 const { User } = require('../models');
 
 const createUser = async (body) => {
@@ -10,8 +11,8 @@ const createUser = async (body) => {
  return { type: null, message: userWithoutPassword };
 };
 
-const getUserByEmail = async (userEmail) => {
- const user = await User.findOne({ where: { email: userEmail } });
+const getUserByEmail = async (email) => {
+ const user = await User.findOne({ where: { email } });
 
 return user;
 };
@@ -20,9 +21,24 @@ const getUsers = async () => {
   const users = await User.findAll();
 
  const result = users.map(({ id, display_name: displayName, email, image }) => (
-  { id, displayName, email, image }));
+  { id, displayName, email, image }
+  ));
 
   if (!users) return { type: 'USERS_NOT_FOUND', message: 'Cannot find users' };
+  return { type: null, message: result };
+};
+
+const getUserById = async (userId) => {
+  const user = await User.findOne(({ where: { id: userId } }));
+  const camelizeUser = camelize(user);
+
+  if (!camelizeUser) {
+    return { type: 'USERID_NOT_FOUND', message: 'User does not exist' };
+  } 
+  
+  const { id, displayName, email, image } = camelizeUser.dataValues;
+  const result = { id, displayName, email, image };
+  
   return { type: null, message: result };
 };
 
@@ -30,4 +46,5 @@ module.exports = {
    createUser,
    getUserByEmail,
    getUsers,
+   getUserById,
    };
