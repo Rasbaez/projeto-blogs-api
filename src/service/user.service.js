@@ -1,5 +1,4 @@
 const snakecaseKeys = require('snakecase-keys');
-const { generateToken } = require('../auth/token');
 const { User } = require('../models');
 
 const createUser = async (body) => {
