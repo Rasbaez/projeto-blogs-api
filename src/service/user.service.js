@@ -11,8 +11,8 @@ const createUser = async (body) => {
  return { type: null, message: userWithoutPassword };
 };
 
-const getUserByEmail = async (userEmail) => {
- const user = await User.findOne({ where: { email: userEmail } });
+const getUserByEmail = async (email) => {
+ const user = await User.findOne({ where: { email } });
 // fazer tratamento de erro aqui!
 return user;
 };

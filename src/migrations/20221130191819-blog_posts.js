@@ -28,11 +28,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-     }
-     );
+     });
   },
 
   down: async (queryInterface, _Sequelize) => {
-   await queryInterface.dropTable('BlogPosts');
+   await queryInterface.dropTable('blog_posts');
   }
 };

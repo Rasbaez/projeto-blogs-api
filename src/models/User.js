@@ -34,12 +34,12 @@ module.exports = (sequelize, DataTypes) => {
   timestamps: false,
   tableName: 'users',
   // avaliador falhando por conta do underscored
-  // underscored: true,
+  underscored: true,
 },
  );
 
- User.associcate = (models) => {
-  User.belongsTo(models.blog_posts, {
+ User.associate = (models) => {
+  User.hasMany(models.BlogPost, {
     foreignKey: 'user_id',
     as: 'blogPosts',
   });
