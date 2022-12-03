@@ -12,6 +12,14 @@ const createCategory = async ({ name }) => {
   return { type: null, message: registeredCategory };
 };
 
+const getCategories = async () => {
+ const categories = await Category.findAll();
+
+ if (!categories) return { type: 'CATEGORY_NOT_FOUND', message: 'Cannot found category' };
+ return { type: null, message: categories };
+};
+
 module.exports = {
   createCategory,
+  getCategories,
 };
