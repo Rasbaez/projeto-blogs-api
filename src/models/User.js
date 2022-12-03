@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
   timestamps: false,
   tableName: 'users',
   // avaliador falhando por conta do underscored
-  underscored: true,
+  // underscored: true,
 },
  );
 
