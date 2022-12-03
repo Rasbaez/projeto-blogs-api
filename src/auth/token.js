@@ -9,7 +9,7 @@ const generateToken = (body) => {
 };
  const token = jwt.sign(payload, JWT_SECRET, {
   algorithm: 'HS256',
-  expiresIn: '10m',
+  expiresIn: '5m',
 });
 
 return { token };

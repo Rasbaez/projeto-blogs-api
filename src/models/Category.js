@@ -7,12 +7,12 @@ module.exports = (sequelize, DataTypes) => {
      type: DataTypes.INTEGER
    },
    name: {
-     allowNull: false,
      type: DataTypes.STRING, 
    }, 
   },
   {
    timestamps: false,
+   tableName: 'categories',
    // avaliador falhando por conta do underscored
    // underscored: true,
  },

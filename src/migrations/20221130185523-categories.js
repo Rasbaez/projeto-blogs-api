@@ -9,13 +9,18 @@ module.exports = {
         type: Sequelize.INTEGER,
        },
       name: {
-        allowNull: false,
         type: Sequelize.STRING,
       },
-      });
+      },
+      {
+        timestamps: false,
+        tableName: 'Categories',
+        underscored: true,
+      }
+      );
   },
 
   down: async (queryInterface, _Sequelize) => {
-    await queryInterface.dropTable('Categories'); 
+    await queryInterface.dropTable('categories'); 
   }
 };

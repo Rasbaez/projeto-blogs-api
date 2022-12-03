@@ -3,6 +3,7 @@ const errorMap = {
   USER_NOT_FOUND: 400,
   USERS_NOT_FOUND: 400,
   USERID_NOT_FOUND: 404,
+  CATEGORY_NOT_REGISTRED: 400,
 };
 
 const mapError = (type) => errorMap[type] || 500;
