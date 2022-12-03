@@ -6,6 +6,7 @@ const createUser = async (req, res) => {
   const { body } = req;
 
   const { token } = generateToken(body);
+  console.log(token);
 
   const user = await userService.getUserByEmail(body.email);
  const { message, type } = await userService.createUser(body);

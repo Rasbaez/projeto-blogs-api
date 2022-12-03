@@ -6,7 +6,7 @@ const Category = Joi.object({
   .required()
   .messages({
     'any.required': '"name" is required',
-    'string.empty': '(#label) is empty',
+    'string.empty': '(#label) is required',
   }),
 });
 

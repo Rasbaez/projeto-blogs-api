@@ -4,8 +4,8 @@ const { JWT_SECRET } = process.env;
 
 const verifyToken = (req, res, next) => {
   const { authorization } = req.headers;
-
-  if (!authorization.length) return res.status(401).json({ message: 'Token not found' });
+ 
+  if (!authorization) return res.status(401).json({ message: 'Token not found' });
   // fonte TokenExpiredError: jwt expired
   jwt.verify(authorization, JWT_SECRET, (err) => {
     if (err) {

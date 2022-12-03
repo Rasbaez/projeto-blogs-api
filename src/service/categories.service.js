@@ -15,7 +15,7 @@ const createCategory = async ({ name }) => {
 const getCategories = async () => {
  const categories = await Category.findAll();
 
- if (!categories) return { type: 'CATEGORY_NOT_FOUND', message: 'Cannot found category' };
+ if (!categories) return { type: 'CATEGORIES_NOT_FOUND', message: 'Cannot found categories' };
  return { type: null, message: categories };
 };
 
