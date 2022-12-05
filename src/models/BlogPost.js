@@ -31,9 +31,7 @@ module.exports = (sequelize, Datatypes) => {
     tableName: 'blogPosts',
     // avaliador falhando por conta do underscored
     // underscored: true,
-  },
-  );
-
+  });
   BlogPost.associate = (models) => {
     BlogPost.belongsTo(models.User, {
       foreignKey: 'user_id',
