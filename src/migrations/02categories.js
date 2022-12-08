@@ -14,7 +14,7 @@ module.exports = {
       },
       {
         timestamps: false,
-        tableName: 'Categories',
+        tableName: 'categories',
         underscored: true,
       }
       );

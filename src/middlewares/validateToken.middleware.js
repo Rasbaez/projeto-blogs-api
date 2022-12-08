@@ -1,17 +1,18 @@
-const jwt = require('jsonwebtoken');
+const { verifyToken } = require('../auth/jwtFunctions');
+const { getUserByEmail } = require('../service/user.service');
 
-const { JWT_SECRET } = process.env;
+  module.exports = async (req, res, next) => {
+    const token = req.header('Authorization');
 
-const verifyToken = (req, res, next) => {
-  const { authorization } = req.headers;
- 
-  if (!authorization) return res.status(401).json({ message: 'Token not found' });
-  // fonte TokenExpiredError: jwt expired
-  jwt.verify(authorization, JWT_SECRET, (err) => {
-    if (err) {
-       return res.status(401).json({ message: 'Expired or invalid token' });
-    } return next(); 
-  });
-};
-
-module.exports = { verifyToken };
+    if (!token) {
+      return res.status(401).json({ message: 'Token not found' });
+    }
+    try {
+      const decoded = verifyToken(token);
+      const user = await getUserByEmail(decoded.data);
+      req.user = user;
+      next();
+    } catch (err) {
+      return res.status(401).json({ message: 'Expired or invalid token' });
+    }
+  };

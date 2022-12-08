@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { verifyToken } = require('../middlewares/validateToken.middleware');
+const verifyToken = require('../middlewares/validateToken.middleware');
 
 const categoryRoutes = Router();
 

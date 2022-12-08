@@ -7,8 +7,10 @@ module.exports = (sequelize, DataTypes) => {
     primaryKey: true,
     type: DataTypes.INTEGER
   },
-
-  display_name: {
+  
+  displayName: {
+    allowNull: false,
+    field: 'display_name',
     type: DataTypes.STRING,
   },
 
@@ -16,33 +18,30 @@ module.exports = (sequelize, DataTypes) => {
     type: DataTypes.STRING,
   },
   password: {
+    allowNull: false,
     type: DataTypes.STRING,
   },
   image: {
     type: DataTypes.STRING,
   },
 
-  created_at: {
-   type: DataTypes.DATE,
-  },
-
-  updated_at: {
-    type: DataTypes.DATE
-  }, 
  },
  {
   timestamps: false,
   tableName: 'users',
-  // avaliador falhando por conta do underscored
-  // underscored: true,
-},
- );
+  underscored: true,
+});
 
  User.associate = (models) => {
   User.hasMany(models.BlogPost, {
     foreignKey: 'user_id',
-    as: 'blogPosts',
+    as: 'blog_posts',
   });
  };
+
  return User;
+ 
 };
+
+
+

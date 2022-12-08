@@ -13,8 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   {
    timestamps: false,
    tableName: 'categories',
-   // avaliador falhando por conta do underscored
-   // underscored: true,
+   underscored: true,
  },
   );
  
