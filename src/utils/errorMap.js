@@ -6,6 +6,7 @@ const errorMap = {
   CATEGORY_NOT_REGISTRED: 400,
   CATEGORIES_NOT_FOUND: 400,
   POSTS_NOT_FOUND: 400,
+  POST_NOT_FOUND: 400,
 };
 
 const mapError = (type) => errorMap[type] || 500;

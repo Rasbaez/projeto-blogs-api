@@ -31,9 +31,11 @@ const getpPostsById = async (req, res) => {
   const { id } = req.params;
   const { body } = req;
   
-  const result = await postsService.updatePost(id, body);
+  const { type, message } = await postsService.updatePost(id, body);
 
-  return res.status(200).json(result);
+  if (type) return res.status(errorMap.mapError(type)).json({ message });
+
+  return res.status(200).json(message);
  };
 
 module.exports = { 

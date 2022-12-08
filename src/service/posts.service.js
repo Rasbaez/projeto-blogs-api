@@ -45,8 +45,9 @@ const post = await BlogPost.findOne(
     { model: Category, as: 'categories', through: { attributes: [] } }],
 },
 );
-
-return post;
+  
+if (!post) return { type: 'POST_NOT_FOUND', message: 'Post not found' };
+return { type: null, message: post };
 };
 
 module.exports = { 
