@@ -1,4 +1,3 @@
-const snakecaseKeys = require('snakecase-keys');
 const camelize = require('camelize');
 const { User } = require('../models');
 const { generateToken } = require('../auth/jwtFunctions');
