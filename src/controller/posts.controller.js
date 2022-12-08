@@ -11,7 +11,7 @@ const postCreator = async (req, res) => {
    return res.status(201).json(newPost);
 };
 
-const getPosts = async (req, res) => {
+const getPosts = async (_req, res) => {
     const { type, message } = await postsService.getPosts();
     if (type) return res.status(errorMap.mapError(type)).json({ message });
 
@@ -38,9 +38,17 @@ const getpPostsById = async (req, res) => {
   return res.status(200).json(message);
  };
 
+ const deletePost = async (req, res) => {
+  const { id } = req.params;
+ 
+   await postsService.deletePost(id);
+  return res.status(204).end();
+ };
+
 module.exports = { 
   postCreator,
   getPosts,
   getpPostsById,
   updatePost,
+  deletePost,
  }; 

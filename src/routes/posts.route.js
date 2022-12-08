@@ -20,12 +20,12 @@ postsRoute.post('/',
 
  postsRoute.get('/', verifyToken, postsController.getPosts);
  postsRoute.get('/:id', verifyToken, postsController.getpPostsById);
- 
+
  postsRoute.put('/:id',
  verifyToken,
  validateUser,
  validateUpdate, 
-
   postsController.updatePost);
+  postsRoute.delete('/:id', verifyToken, validateUser, postsController.deletePost);
 
 module.exports = { postsRoute, postsController };

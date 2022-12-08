@@ -25,7 +25,6 @@ const getPosts = async () => {
 const getPostById = async (id) => {
   const post = await BlogPost.findOne({
     where: { id },
-    attributes: { exclude: ['userId'] },
     include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } },
     { model: Category, as: 'categories', through: { attributes: [] } }],
   });
@@ -41,6 +40,7 @@ await BlogPost.update(
 );
 const post = await BlogPost.findOne(
   { where: { id },
+  attributes: { exclude: ['user_id'] },
   include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } },
     { model: Category, as: 'categories', through: { attributes: [] } }],
 },
@@ -50,9 +50,12 @@ if (!post) return { type: 'POST_NOT_FOUND', message: 'Post not found' };
 return { type: null, message: post };
 };
 
+const deletePost = async (id) => BlogPost.destroy({ where: { id } });
+
 module.exports = { 
   postCreator,
    getPosts,
    getPostById,
    updatePost,
+   deletePost,
    };
