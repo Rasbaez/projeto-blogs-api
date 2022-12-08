@@ -11,4 +11,6 @@ postsRoute.post('/',
  validateCategoryId,
  postsController.postCreator);
 
+ postsRoute.get('/', verifyToken, postsController.getPosts);
+
 module.exports = { postsRoute, postsController };
