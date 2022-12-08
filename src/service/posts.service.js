@@ -15,15 +15,26 @@ const getPosts = async () => {
     attributes: { exclude: ['userId'] },
     include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } },
     { model: Category, as: 'categories', through: { attributes: [] } }],
-    
   });
-      
+
   if (!posts) return { type: 'POSTS_NOT_FOUND', message: 'No posts found' };
 
-    return { type: null, message: posts };
+  return { type: null, message: posts };
+ };
+
+const getPostById = async (id) => {
+  const post = await BlogPost.findOne({
+    where: { id },
+    attributes: { exclude: ['userId'] },
+    include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } },
+    { model: Category, as: 'categories', through: { attributes: [] } }],
+  });
+
+  return post;
 };
 
 module.exports = { 
   postCreator,
    getPosts,
+   getPostById,
    };

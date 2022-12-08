@@ -12,5 +12,6 @@ postsRoute.post('/',
  postsController.postCreator);
 
  postsRoute.get('/', verifyToken, postsController.getPosts);
+ postsRoute.get('/:id', verifyToken, postsController.getpPostsById);
 
 module.exports = { postsRoute, postsController };

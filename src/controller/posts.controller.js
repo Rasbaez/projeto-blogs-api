@@ -11,15 +11,24 @@ const postCreator = async (req, res) => {
    return res.status(201).json(newPost);
 };
 
-const getPosts = async (_req, res) => {
- const { type, message } = await postsService.getPosts();
+const getPosts = async (req, res) => {
+    const { type, message } = await postsService.getPosts();
+    if (type) return res.status(errorMap.mapError(type)).json({ message });
 
- if (type) return res.status(errorMap.mapError(type)).json({ message });
- 
- return res.status(200).json(message);
+   return res.status(200).json(message);
 };
+
+const getpPostsById = async (req, res) => {
+  const { id } = req.params;
+
+  const post = await postsService.getPostById(id);
+  if (!post) return res.status(404).json({ message: 'Post does not exist' });
+
+  return res.status(200).json(post);
+ };
 
 module.exports = { 
   postCreator,
   getPosts,
+  getpPostsById,
  }; 
