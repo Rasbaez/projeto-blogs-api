@@ -55,18 +55,18 @@ const deletePost = async (id) => BlogPost.destroy({ where: { id } });
 
 const searchPost = async (query) => {
  const post = await BlogPost.findAll({
-    where: { [Op.or]: [{
-      title: { [Op.substring]: query },
-    }, 
+    where: { [Op.or]: [
+    { title: { [Op.substring]: query } }, 
+    { content: { [Op.substring]: query } },
   ] },
-  content: { [Op.substring]: query },
     attributes: { exclude: ['user_id'] },
     include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } },
    
     { model: Category, as: 'categories', through: { attributes: [] } }],
   });
 
-  return post; 
+  if (!post) return { type: 'POSTS_NOT_FOUND', message: 'Post not Found' };
+   return { type: null, message: post };
 };
 
 module.exports = { 

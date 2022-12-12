@@ -23,9 +23,8 @@ postsRoute.post('/',
  validateUser,
  validateUpdate, 
   postsController.updatePost);
- 
-  postsRoute.get('/search', verifyToken, postsController.searchPost);
 
+  postsRoute.get('/search', verifyToken, postsController.searchPost);
   postsRoute.get('/', verifyToken, postsController.getPosts);
   postsRoute.get('/:id', verifyToken, postsController.getpPostsById);
   postsRoute.delete('/:id', verifyToken, validateUser, postsController.deletePost);

@@ -47,10 +47,11 @@ const getpPostsById = async (req, res) => {
  };
 
 const searchPost = async (req, res) => {
-  const { query } = req.query;
- const post = await postsService.searchPost(query);
+  const { q } = req.query;
+ const { type, message } = await postsService.searchPost(q);
 
- return res.status(200).json(post);
+ if (type) return res.status(errorMap.mapError(type)).json({ message });
+return res.status(200).json(message);
 };
 
 module.exports = { 
