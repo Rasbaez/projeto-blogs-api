@@ -46,10 +46,18 @@ const getpPostsById = async (req, res) => {
   return res.status(204).end();
  };
 
+const searchPost = async (req, res) => {
+  const { query } = req.query;
+ const post = await postsService.searchPost(query);
+
+ return res.status(200).json(post);
+};
+
 module.exports = { 
   postCreator,
   getPosts,
   getpPostsById,
   updatePost,
   deletePost,
+  searchPost,
  }; 
