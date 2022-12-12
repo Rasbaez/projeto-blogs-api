@@ -12,6 +12,7 @@ const {
 
 const verifyToken = require('../middlewares/validateToken.middleware');
 
+postsRoute.delete('/:id', verifyToken, validateUser, postsController.deletePost);
 postsRoute.post('/',
  verifyToken, 
  validate,
@@ -26,6 +27,5 @@ postsRoute.post('/',
  validateUser,
  validateUpdate, 
   postsController.updatePost);
-  postsRoute.delete('/:id', verifyToken, validateUser, postsController.deletePost);
 
 module.exports = { postsRoute, postsController };

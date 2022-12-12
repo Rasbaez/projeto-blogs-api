@@ -41,7 +41,9 @@ const getpPostsById = async (req, res) => {
  const deletePost = async (req, res) => {
   const { id } = req.params;
  
-   await postsService.deletePost(id);
+ await postsService.deletePost(id);
+  // console.log(deletedPost);
+   
   return res.status(204).end();
  };
 

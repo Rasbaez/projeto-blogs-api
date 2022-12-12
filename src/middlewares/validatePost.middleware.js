@@ -44,13 +44,13 @@ const validateUser = async (req, res, next) => {
 
     try {
         const post = await postsService.getPostById(id);
-        if (post.id !== userId) {
+        if (post.userId !== userId) {
             return res.status(401).json({ message: 'Unauthorized user' }); 
         } 
     } catch (error) {
-        return res.status(404).json({ message: 'Post does not exist' });
+             res.status(404).json({ message: 'Post does not exist' });
     }
-     next();
+    return next();
 };
 
 const validateCategoryId = async (req, res, next) => {
