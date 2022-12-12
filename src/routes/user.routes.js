@@ -8,5 +8,6 @@ const verifyToken = require('../middlewares/validateToken.middleware');
 userRoutes.post('/', newUserVerify, userController.createUser);
 userRoutes.get('/', verifyToken, userController.getUsers);
 userRoutes.get('/:id', verifyToken, userController.getUserById);
+userRoutes.delete('/:me', verifyToken, userController.deleteMe);
 
 module.exports = { userRoutes };

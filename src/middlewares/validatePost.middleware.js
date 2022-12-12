@@ -48,7 +48,7 @@ const validateUser = async (req, res, next) => {
             return res.status(401).json({ message: 'Unauthorized user' }); 
         } 
     } catch (error) {
-             res.status(404).json({ message: 'Post does not exist' });
+            return res.status(404).json({ message: 'Post does not exist' });
     }
     return next();
 };

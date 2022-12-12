@@ -12,20 +12,20 @@ const {
 
 const verifyToken = require('../middlewares/validateToken.middleware');
 
-postsRoute.delete('/:id', verifyToken, validateUser, postsController.deletePost);
 postsRoute.post('/',
  verifyToken, 
  validate,
  validateCategoryId,
  postsController.postCreator);
 
- postsRoute.get('/', verifyToken, postsController.getPosts);
- postsRoute.get('/:id', verifyToken, postsController.getpPostsById);
-
  postsRoute.put('/:id',
  verifyToken,
  validateUser,
  validateUpdate, 
   postsController.updatePost);
+
+  postsRoute.get('/', verifyToken, postsController.getPosts);
+  postsRoute.get('/:id', verifyToken, postsController.getpPostsById);
+  postsRoute.delete('/:id', verifyToken, validateUser, postsController.deletePost);
 
 module.exports = { postsRoute, postsController };
