@@ -5,8 +5,8 @@ const Category = Joi.object({
   .string()
   .required()
   .messages({
-    'any.required': '"name" is required',
-    'string.empty': '(#label) is required',
+    'any.required': '{#label} is required',
+    'string.empty': '{#label} is required',
   }),
 });
 
